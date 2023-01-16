@@ -1,6 +1,6 @@
 # denote
 
-A new Flutter project.
+A documents-sharing app using firebase and flutter.
 
 ## Getting Started
 
