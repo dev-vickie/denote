@@ -60,12 +60,29 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     controller: emailController,
                     icon: Icons.email_rounded,
                     hintText: "Recovery Email",
+                    validator: (value) {
+                      RegExp regex = RegExp(r'\w+@\w+\.\w+');
+                      if (value!.isEmpty) {
+                        return "Please enter an email adress";
+                      } else if (!regex.hasMatch(value)) {
+                        return "Please enter a valid email adress";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("Sent,Check your email"),
+                          ),
+                        );
+                      }
+                    },
                     child:
                         const SubmitButton(buttonText: "Send recovery email"),
                   ),

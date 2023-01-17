@@ -56,6 +56,15 @@ class _LoginPageState extends State<LoginPage> {
                     controller: emailController,
                     icon: Icons.alternate_email_outlined,
                     hintText: "Email",
+                    validator: (value) {
+                      RegExp regex = RegExp(r'\w+@\w+\.\w+');
+                      if (value!.isEmpty) {
+                        return "Please enter an email adress";
+                      } else if (!regex.hasMatch(value)) {
+                        return "Please enter a valid email adress";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -66,6 +75,22 @@ class _LoginPageState extends State<LoginPage> {
                     controller: passwordController,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
+                    validator: (value) {
+                      RegExp hasUpper = RegExp(r'[A-Z]');
+                      RegExp hasDigit = RegExp(r'\d');
+                      if (!RegExp(r'.{8,}').hasMatch(value!)) {
+                        return "Password must be atleast 8 Characters";
+                      }
+                      if (!hasUpper.hasMatch(value)) {
+                        return "Put atleast one Uppercase letter";
+                      }
+
+                      if (!hasDigit.hasMatch(value)) {
+                        return "Put atleast one digit";
+                      }
+
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 8.0),
 
@@ -92,7 +117,15 @@ class _LoginPageState extends State<LoginPage> {
 
                   //Submit Button
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("Done"),
+                          ),
+                        );
+                      }
+                    },
                     child: const SubmitButton(buttonText: "Login"),
                   ),
                   const SizedBox(

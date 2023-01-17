@@ -13,13 +13,25 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final nameConroller = TextEditingController();
-  final emailConroller = TextEditingController();
-  final passwordConroller = TextEditingController();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
 
   String? dropDownValue = "Select Course";
   String? dropDownYear = "Year";
+  String? _confirmPassword;
+
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +58,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //FirstName input
                   CustomTextField(
-                    controller: nameConroller,
+                    controller: nameController,
                     icon: Icons.perm_identity_rounded,
                     hintText: "First Name",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter your first name";
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
                   const SizedBox(height: 15),
 
@@ -58,6 +77,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       Expanded(
                         flex: 2,
                         child: DropdownButtonFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please select course";
+                            } else if (value == "Select Course") {
+                              return "Please select course";
+                            } else {
+                              return null;
+                            }
+                          },
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.grey[600],
@@ -83,6 +111,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       Expanded(
                         child: DropdownButtonFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Enter your year";
+                            } else if (value == "Year") {
+                              return "Select year";
+                            } else {
+                              return null;
+                            }
+                          },
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.grey[600],
@@ -115,17 +152,43 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //Email input field
                   CustomTextField(
-                    controller: emailConroller,
+                    controller: emailController,
                     icon: Icons.email,
                     hintText: "Email",
+                    validator: (value) {
+                      RegExp regex = RegExp(r'\w+@\w+\.\w+');
+                      if (value!.isEmpty) {
+                        return "Please enter an email adress";
+                      } else if (!regex.hasMatch(value)) {
+                        return "Please enter a valid email adress";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 15),
 
                   //Password input field
                   CustomTextField(
-                    controller: passwordConroller,
+                    //TODO:suffix icon
+                    controller: passwordController,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
+                    validator: (value) {
+                      RegExp hasUpper = RegExp(r'[A-Z]');
+                      RegExp hasDigit = RegExp(r'\d');
+                      if (!RegExp(r'.{8,}').hasMatch(value!)) {
+                        return "Password must have atleast 8 Characters";
+                      }
+                      if (!hasUpper.hasMatch(value)) {
+                        return "Put Atleast one Uppercase";
+                      }
+                      if (!hasDigit.hasMatch(value)) {
+                        return "Put Atleast one Digit";
+                      }
+
+                      _confirmPassword = value;
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 20),
 
@@ -133,6 +196,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   CustomTextField(
                     icon: Icons.lock_outline_rounded,
                     hintText: "Confirm Password",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please confirm your password";
+                      }
+                      if (value != _confirmPassword) {
+                        return "Passwords do not match";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 20,
@@ -157,7 +229,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //Submit button
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("Signup Successful"),
+                          ),
+                        );
+                      }
+                    },
                     child: const SubmitButton(buttonText: "Signup"),
                   ),
                   const SizedBox(
