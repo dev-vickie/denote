@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
+  TextEditingController? controller;
   final String hintText;
   final IconData icon;
 
-  const CustomTextField({
+  CustomTextField({
     super.key,
+    this.controller,
     required this.icon,
     required this.hintText,
   });

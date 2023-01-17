@@ -13,6 +13,7 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  final emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -55,7 +56,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     "Don't Worry! It happens. Please enter the email adress associated with your account",
                   ),
                   const SizedBox(height: 25),
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: emailController,
                     icon: Icons.email_rounded,
                     hintText: "Recovery Email",
                   ),

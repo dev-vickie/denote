@@ -52,7 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   //Input Email TextField
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: emailController,
                     icon: Icons.alternate_email_outlined,
                     hintText: "Email",
                   ),
@@ -61,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   //Password Input Field
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: passwordController,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
                   ),

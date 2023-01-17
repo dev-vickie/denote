@@ -13,6 +13,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final nameConroller = TextEditingController();
+  final emailConroller = TextEditingController();
+  final passwordConroller = TextEditingController();
+
   String? dropDownValue = "Select Course";
   String? dropDownYear = "Year";
   final _formKey = GlobalKey<FormState>();
@@ -41,7 +45,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
 
                   //FirstName input
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: nameConroller,
                     icon: Icons.perm_identity_rounded,
                     hintText: "First Name",
                   ),
@@ -109,21 +114,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 15),
 
                   //Email input field
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: emailConroller,
                     icon: Icons.email,
                     hintText: "Email",
                   ),
                   const SizedBox(height: 15),
 
                   //Password input field
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: passwordConroller,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
                   ),
                   const SizedBox(height: 20),
 
                   //Confirm Password field
-                  const CustomTextField(
+                  CustomTextField(
                     icon: Icons.lock_outline_rounded,
                     hintText: "Confirm Password",
                   ),
