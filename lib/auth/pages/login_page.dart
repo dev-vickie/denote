@@ -1,5 +1,6 @@
 import 'package:denote/auth/pages/forgot_password.dart';
 import 'package:denote/auth/pages/register_page.dart';
+import 'package:denote/homepages/home_builder/homepage.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
@@ -118,6 +119,11 @@ class _LoginPageState extends State<LoginPage> {
                   //Submit Button
                   GestureDetector(
                     onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                      );
                       if (_formKey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

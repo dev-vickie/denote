@@ -77,6 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Expanded(
                         flex: 2,
                         child: DropdownButtonFormField(
+                          value: dropDownValue,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please select course";
@@ -93,7 +94,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: const InputDecoration(
                             icon: Icon(Icons.workspace_premium),
                           ),
-                          value: dropDownValue,
                           onChanged: (value) {
                             setState(() {
                               dropDownValue = value;
@@ -169,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //Password input field
                   CustomTextField(
-                    //TODO:suffix icon
+                    //TODO: Add suffix icon to view/hide password
                     controller: passwordController,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
@@ -180,10 +180,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         return "Password must have atleast 8 Characters";
                       }
                       if (!hasUpper.hasMatch(value)) {
-                        return "Put Atleast one Uppercase";
+                        return "Put atleast one Uppercase letter";
                       }
                       if (!hasDigit.hasMatch(value)) {
-                        return "Put Atleast one Digit";
+                        return "Put atleast one Digit";
                       }
 
                       _confirmPassword = value;
