@@ -1,4 +1,5 @@
 import 'package:denote/constants/constants.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../first_page/first_page.dart';
 import '../second_page.dart';
@@ -39,21 +40,37 @@ class _HomePageState extends State<HomePage> {
 
       //Bottom Nav Bar
 
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedPage,
-        onTap: pageNavigator,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.mediation_outlined), label: "Units"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Settings"),
-        ],
-        backgroundColor: kMainDarkColor,
-        unselectedIconTheme: const IconThemeData(color: Colors.white),
-        selectedIconTheme:
-            const IconThemeData(color: Color.fromARGB(255, 3, 9, 44)),
+      bottomNavigationBar: Container(
+        color: kMainDarkColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: GNav(
+            padding: const EdgeInsets.all(16),
+            backgroundColor: kMainDarkColor,
+            tabBackgroundColor: kMainLightColor,
+            color: kMainLightColor,
+            activeColor: Colors.white,
+            gap: 8.0,
+            selectedIndex: selectedPage,
+            onTabChange: (value) {
+              pageNavigator(value);
+            },
+            tabs: const [
+              GButton(
+                icon: Icons.home,
+                text: "Home",
+              ),
+              GButton(
+                icon: Icons.mediation_rounded,
+                text: "Units",
+              ),
+              GButton(
+                icon: Icons.settings,
+                text: "Settings",
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

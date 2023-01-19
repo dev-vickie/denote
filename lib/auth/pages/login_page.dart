@@ -2,7 +2,6 @@ import 'package:denote/auth/pages/forgot_password.dart';
 import 'package:denote/auth/pages/register_page.dart';
 import 'package:denote/homepages/home_builder/homepage.dart';
 import 'package:flutter/material.dart';
-
 import '../../constants/constants.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/page_text.dart';
@@ -121,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => const HomePage(),
                         ),
                       );
                       if (_formKey.currentState!.validate()) {
