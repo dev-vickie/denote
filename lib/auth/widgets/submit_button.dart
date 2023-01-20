@@ -12,7 +12,7 @@ class SubmitButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: kMainDarkColor,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(50),
       ),
       child: Center(
         child: Text(

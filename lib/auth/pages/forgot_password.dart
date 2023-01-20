@@ -83,8 +83,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         );
                       }
                     },
-                    child:
-                        const SubmitButton(buttonText: "Send recovery email"),
+                    child: const SubmitButton(
+                      buttonText: "Send recovery email",
+                    ),
                   ),
                 ],
               ),
