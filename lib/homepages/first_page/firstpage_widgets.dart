@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../constants/constants.dart';
+import '../docs_per_category.dart';
 
 class DocItem extends StatelessWidget {
   const DocItem({
@@ -97,13 +97,23 @@ class CategoryTexts extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Text(
-            'view all',
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.grey[600],
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DocumentsInEachCategoy(
+                categoryName: categories[index],
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Text(
+              'view all',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.grey[600],
+              ),
             ),
           ),
         ),

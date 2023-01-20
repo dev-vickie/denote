@@ -22,6 +22,7 @@ class _FirstPageState extends State<FirstPage> {
       body: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {
+          //return this for each course category
           return SizedBox(
             height: 200,
             child: Container(
@@ -34,20 +35,22 @@ class _FirstPageState extends State<FirstPage> {
                 children: [
                   Expanded(
                     flex: 1,
+                    //custom widget to display category name
                     child: CategoryTexts(
                       categories: categories,
                       index: index,
                     ),
                   ),
                   Expanded(
-                      flex: 4,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return const DocItem();
-                        },
-                      )),
+                    flex: 4,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return const DocItem(); //each document item in a category
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

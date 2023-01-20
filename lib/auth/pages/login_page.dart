@@ -1,6 +1,6 @@
 import 'package:denote/auth/pages/forgot_password.dart';
 import 'package:denote/auth/pages/register_page.dart';
-import 'package:denote/homepages/home_builder/homepage.dart';
+import 'package:denote/homepages/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
 import '../widgets/custom_textfield.dart';
@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,9 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const PageText(pageTitle: "Login"),
+                  const PageText(
+                    pageTitle: "Login",
+                  ),
                   const SizedBox(
                     height: 10,
                   ),

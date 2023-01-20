@@ -2,8 +2,8 @@ import 'package:denote/constants/constants.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../first_page/first_page.dart';
-import '../second_page.dart';
-import '../third_page.dart';
+import '../second_page/second_page.dart';
+import '../third_page/third_page.dart';
 import 'homepage_widgets.dart';
 
 class HomePage extends StatefulWidget {

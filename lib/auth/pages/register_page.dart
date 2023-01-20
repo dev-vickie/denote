@@ -26,11 +26,26 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  String? dropDownValue = "Select Course";
-  String? dropDownYear = "Year";
+  String? selectedCourse = "Select Course";
+  String? selectedYear = "Year";
   String? _confirmPassword;
 
-  final _formKey = GlobalKey<FormState>();
+  //List of courses/years in the drop down textfields - it is hard-coded for now
+  final List<String> coursesList = [
+    "Select Course",
+    "Bsc Civil",
+    "Bsc Mechanical",
+  ];
+  final List<String> yearsList = [
+    "Year",
+    "2022",
+    "2021",
+    "2020",
+    "2019",
+    "2018",
+  ];
+
+  final _formKey = GlobalKey<FormState>(); //Formkey for form validation
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +91,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Expanded(
                         flex: 2,
+                        //Select Course DropDown
                         child: DropdownButtonFormField(
-                          value: dropDownValue,
+                          value: selectedCourse,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please select course";
+
+                              // if user has selected 'Select Course option'
                             } else if (value == "Select Course") {
                               return "Please select course";
                             } else {
@@ -96,20 +114,18 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           onChanged: (value) {
                             setState(() {
-                              dropDownValue = value;
+                              selectedCourse = value;
                             });
                           },
-                          items: <String>[
-                            "Select Course",
-                            "Bsc Civil",
-                            "Bsc Mechanical",
-                          ].map<DropdownMenuItem<String>>((String value) {
+                          items: coursesList
+                              .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem(
                                 value: value, child: Text(value));
                           }).toList(),
                         ),
                       ),
                       Expanded(
+                        //Select Year dropdown
                         child: DropdownButtonFormField(
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -127,23 +143,20 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: const InputDecoration(
                             icon: Icon(Icons.view_timeline_rounded),
                           ),
-                          value: dropDownYear,
+                          value: selectedYear,
                           onChanged: (value) {
                             setState(() {
-                              dropDownYear = value;
+                              selectedYear = value;
                             });
                           },
-                          items: <String>[
-                            "Year",
-                            "2022",
-                            "2021",
-                            "2020",
-                            "2019",
-                            "2018",
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem(
-                                value: value, child: Text(value));
-                          }).toList(),
+                          items: yearsList.map<DropdownMenuItem<String>>(
+                            (String value) {
+                              return DropdownMenuItem(
+                                value: value,
+                                child: Text(value),
+                              );
+                            },
+                          ).toList(),
                         ),
                       ),
                     ],
