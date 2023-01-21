@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class DocumentsInEachCategoy extends StatelessWidget {
   final String categoryName;
-  const DocumentsInEachCategoy({super.key, required this.categoryName});
+  const DocumentsInEachCategoy({
+    super.key,
+    required this.categoryName,
+  });
 
   @override
   Widget build(BuildContext context) {

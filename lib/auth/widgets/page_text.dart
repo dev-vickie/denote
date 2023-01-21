@@ -9,7 +9,7 @@ class PageText extends StatelessWidget {
     return Text(
       pageTitle,
       style: const TextStyle(
-        fontSize: 32,
+        fontSize: 29,
         color: Colors.black,
         fontWeight: FontWeight.bold,
       ),

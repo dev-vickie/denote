@@ -79,17 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
                     validator: (value) {
-                      RegExp hasUpper = RegExp(r'[A-Z]');
-                      RegExp hasDigit = RegExp(r'\d');
-                      if (!RegExp(r'.{8,}').hasMatch(value!)) {
-                        return "Password must be atleast 8 Characters";
-                      }
-                      if (!hasUpper.hasMatch(value)) {
-                        return "Put atleast one Uppercase letter";
-                      }
-
-                      if (!hasDigit.hasMatch(value)) {
-                        return "Put atleast one digit";
+                      if (value!.isEmpty) {
+                        return ("Please enter your password");
                       }
 
                       return null;

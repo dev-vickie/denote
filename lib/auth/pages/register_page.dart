@@ -106,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                           },
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             color: Colors.grey[600],
                           ),
                           decoration: const InputDecoration(
@@ -137,7 +137,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                           },
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             color: Colors.grey[600],
                           ),
                           decoration: const InputDecoration(

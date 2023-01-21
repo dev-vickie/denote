@@ -27,7 +27,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: const TextStyle(
-          fontSize: 18,
+          fontSize: 16,
         ),
         icon: Icon(
           widget.icon,
