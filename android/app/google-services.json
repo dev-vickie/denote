@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "17043717885",
+    "project_id": "denote-bb303",
+    "storage_bucket": "denote-bb303.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17043717885:android:f97fff2d819cc856c9c894",
+        "android_client_info": {
+          "package_name": "com.vickie.denote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17043717885-elas6eegf6cgomgu2v2r0iqs7hd58uvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC_b7U-uafQ5PzIqgw-M9CO8hZAoLJqzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17043717885-elas6eegf6cgomgu2v2r0iqs7hd58uvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
