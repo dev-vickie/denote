@@ -1,3 +1,4 @@
+import 'package:denote/auth/firebase_service/firebase.dart';
 import 'package:denote/auth/pages/forgot_password.dart';
 import 'package:denote/auth/pages/register_page.dart';
 import 'package:flutter/material.dart';
@@ -119,6 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                               child: CircularProgressIndicator(),
                             );
                           },
+                        );
+                        AuthService.signInEmailPassword(
+                          emailController.text,
+                          passwordController.text,
                         );
                       }
                     },
