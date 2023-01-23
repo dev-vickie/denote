@@ -33,4 +33,35 @@ class AuthService {
       );
     }
   }
+
+  static Future<void> createUserEmailPassword(
+      String email, String password) async {
+    //Show loading dialog
+
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then(
+            (value) => print(value.user!.uid),
+          );
+      // navigatorKey.currentState!.pop();
+      messengerKey.currentState!.showSnackBar(
+        const SnackBar(
+          content: Text("Sucess"),
+          backgroundColor: Colors.blue,
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      navigatorKey.currentState!.pop();
+      messengerKey.currentState!.showSnackBar(
+        SnackBar(
+          content: Text(e.code.toString()),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 }

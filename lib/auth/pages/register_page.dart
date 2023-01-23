@@ -1,6 +1,9 @@
 import 'package:denote/auth/pages/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
+import '../../main.dart';
+import '../firebase_service/firebase_auth.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/page_text.dart';
 import '../widgets/submit_button.dart';
@@ -98,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             if (value!.isEmpty) {
                               return "Please select course";
 
-                              // if user has selected 'Select Course option'
+                              // if user has selected 'Select Course' option
                             } else if (value == "Select Course") {
                               return "Please select course";
                             } else {
@@ -114,10 +117,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           onChanged: (value) {
                             setState(() {
+                              //take value as the selected course
                               selectedCourse = value;
                             });
                           },
-                          items: coursesList
+                          items: coursesList //list of courses do here
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem(
                                 value: value, child: Text(value));
@@ -244,10 +248,16 @@ class _RegisterPageState extends State<RegisterPage> {
                   GestureDetector(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Signup Successful"),
-                          ),
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            });
+
+                        AuthService.createUserEmailPassword(
+                          emailController.text.trim(),
+                          passwordController.text.trim(),
                         );
                       }
                     },
@@ -257,7 +267,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 10,
                   ),
 
-                  //Direct to login page
+                  //Naviate to login page
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
