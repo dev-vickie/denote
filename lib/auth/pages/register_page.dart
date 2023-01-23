@@ -76,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //FirstName input
                   CustomTextField(
+                    hidePassword: false,
                     controller: nameController,
                     icon: Icons.perm_identity_rounded,
                     hintText: "First Name",
@@ -169,6 +170,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //Email input field
                   CustomTextField(
+                    hidePassword: false,
                     controller: emailController,
                     icon: Icons.email,
                     hintText: "Email",
@@ -186,7 +188,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //Password input field
                   CustomTextField(
-                    //TODO: Add suffix icon to view/hide password
+                    hidePassword: true,
+                    suffixIcon: Icons.remove_red_eye_rounded,
                     controller: passwordController,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",
@@ -211,6 +214,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //Confirm Password field
                   CustomTextField(
+                    hidePassword: true,
+                    suffixIcon: Icons.remove_red_eye_rounded,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Confirm Password",
                     validator: (value) {

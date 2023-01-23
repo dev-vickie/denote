@@ -35,7 +35,9 @@ class AuthService {
   }
 
   static Future<void> createUserEmailPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     //Show loading dialog
 
     try {

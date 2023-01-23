@@ -56,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   //Input Email TextField
                   CustomTextField(
+                    hidePassword: false,
                     controller: emailController,
                     icon: Icons.alternate_email_outlined,
                     hintText: "Email",
@@ -75,6 +76,8 @@ class _LoginPageState extends State<LoginPage> {
 
                   //Password Input Field
                   CustomTextField(
+                    hidePassword: true,
+                    suffixIcon: Icons.remove_red_eye_rounded,
                     controller: passwordController,
                     icon: Icons.lock_outline_rounded,
                     hintText: "Password",

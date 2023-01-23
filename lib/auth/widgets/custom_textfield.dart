@@ -5,11 +5,15 @@ class CustomTextField extends StatefulWidget {
   final String hintText;
   final IconData icon;
   final String? Function(String?)? validator;
+  final IconData? suffixIcon;
+  late bool? hidePassword;
 
   CustomTextField({
     super.key,
     this.controller,
     this.validator,
+    this.suffixIcon,
+    required this.hidePassword,
     required this.icon,
     required this.hintText,
   });
@@ -23,6 +27,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      obscureText: widget.hidePassword!,
       validator: widget.validator,
       decoration: InputDecoration(
         hintText: widget.hintText,
@@ -32,6 +37,21 @@ class _CustomTextFieldState extends State<CustomTextField> {
         icon: Icon(
           widget.icon,
           size: 26,
+        ),
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              if (widget.hidePassword == false) {
+                widget.hidePassword = true;
+              } else {
+                widget.hidePassword = false;
+              }
+            });
+          },
+          icon: Icon(
+            widget.suffixIcon,
+            size: 24,
+          ),
         ),
       ),
     );

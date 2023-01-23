@@ -57,6 +57,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   ),
                   const SizedBox(height: 25),
                   CustomTextField(
+                    hidePassword: false,
                     controller: emailController,
                     icon: Icons.email_rounded,
                     hintText: "Recovery Email",
