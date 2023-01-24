@@ -1,4 +1,5 @@
 import 'package:denote/auth/pages/login_page.dart';
+import 'package:denote/auth/utils/show_error.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
@@ -9,7 +10,8 @@ import '../widgets/page_text.dart';
 import '../widgets/submit_button.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final Function()? onTap;
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -49,6 +51,28 @@ class _RegisterPageState extends State<RegisterPage> {
   ];
 
   final _formKey = GlobalKey<FormState>(); //Formkey for form validation
+  Future<void> createUserEmailPassword(String email, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then(
+            (value) => print(value.user!.uid),
+          );
+      messengerKey.currentState!.showSnackBar(
+        const SnackBar(
+          content: Text("Sucess"),
+          backgroundColor: Colors.blue,
+        ),
+      );
+      navigatorKey.currentState!.pop();
+    } on FirebaseAuthException catch (e) {
+      navigatorKey.currentState!.pop();
+      showErrorMessage(e.code, context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -260,7 +284,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   child: CircularProgressIndicator());
                             });
 
-                        AuthService.createUserEmailPassword(
+                        createUserEmailPassword(
                           emailController.text.trim(),
                           passwordController.text.trim(),
                         );
@@ -281,14 +305,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: TextStyle(fontSize: 16),
                       ),
                       TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginPage(),
-                            ),
-                          );
-                        },
+                        onPressed: widget.onTap,
                         child: Text(
                           "login",
                           style: TextStyle(

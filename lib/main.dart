@@ -1,4 +1,4 @@
-import 'package:denote/auth/pages/login_page.dart';
+import 'package:denote/auth/pages/auth_controller.dart';
 import 'package:denote/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       scaffoldMessengerKey: messengerKey,
       title: 'Easy access',
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: const AuthPage(),
     );
   }
 }

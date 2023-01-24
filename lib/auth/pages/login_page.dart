@@ -1,14 +1,18 @@
-import 'package:denote/auth/firebase_service/firebase_auth.dart';
 import 'package:denote/auth/pages/forgot_password.dart';
-import 'package:denote/auth/pages/register_page.dart';
+import 'package:denote/homepages/homepage/homepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
+import '../../main.dart';
+import '../utils/show_error.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/page_text.dart';
 import '../widgets/submit_button.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final Function()? onTap;
+
+  const LoginPage({super.key, required this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -26,6 +30,30 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   final _formKey = GlobalKey<FormState>();
+  Future<void> signInEmailPassword(String email, String password) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      navigatorKey.currentState!.pop();
+
+      //show success snackbar if account created successfully
+      messengerKey.currentState!.showSnackBar(
+        const SnackBar(
+          content: Text("Login Sucess"),
+          backgroundColor: Colors.blue,
+        ),
+      );
+      print("done");
+      //pop the loading indicator
+    } on FirebaseAuthException catch (error) {
+      //pop the indicator on error
+      navigatorKey.currentState!.pop();
+      //show the error in the snackbar
+      showErrorMessage(error.code, context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                         );
-                        AuthService.signInEmailPassword(
+                        signInEmailPassword(
                           emailController.text,
                           passwordController.text,
                         );
@@ -156,13 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                         width: 5,
                       ),
                       TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const RegisterPage(),
-                            ),
-                          );
-                        },
+                        onPressed: widget.onTap,
                         child: const Text(
                           "Register",
                           style: TextStyle(

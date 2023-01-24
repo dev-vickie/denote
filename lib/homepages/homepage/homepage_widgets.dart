@@ -1,3 +1,4 @@
+import 'package:denote/auth/firebase_service/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
 
@@ -28,6 +29,7 @@ var mainAppBar = AppBar(
 var mainAppDrawer = Drawer(
   backgroundColor: kMainDarkColor,
   child: Column(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: const [
       DrawerHeader(
         child: Center(
@@ -40,8 +42,9 @@ var mainAppDrawer = Drawer(
         )),
       ),
       ListTile(
+        onTap: AuthService.signOut,
         title: Text(
-          'Home',
+          "Logout",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
