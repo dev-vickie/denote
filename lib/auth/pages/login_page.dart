@@ -1,5 +1,4 @@
 import 'package:denote/auth/pages/forgot_password.dart';
-import 'package:denote/homepages/homepage/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
@@ -48,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       print("done");
       //pop the loading indicator
     } on FirebaseAuthException catch (error) {
+      print(error.code);
       //pop the indicator on error
       navigatorKey.currentState!.pop();
       //show the error in the snackbar

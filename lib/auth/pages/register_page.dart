@@ -1,10 +1,8 @@
-import 'package:denote/auth/pages/login_page.dart';
 import 'package:denote/auth/utils/show_error.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
 import '../../main.dart';
-import '../firebase_service/firebase_auth.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/page_text.dart';
 import '../widgets/submit_button.dart';
@@ -50,7 +48,8 @@ class _RegisterPageState extends State<RegisterPage> {
     "2018",
   ];
 
-  final _formKey = GlobalKey<FormState>(); //Formkey for form validation
+  //Formkey for form validation
+  final _formKey = GlobalKey<FormState>();
   Future<void> createUserEmailPassword(String email, String password) async {
     try {
       await FirebaseAuth.instance

@@ -17,6 +17,13 @@ void showErrorMessage(String code, BuildContext context) {
     case ("email-already-in-use"):
       code = "Email is already registered.\nPlease Login";
       break;
+    case ("too-many-requests"):
+      code = "Too many requests\nPlease try after little while.";
+      break;
+    case ('network-request-failed'):
+      code =
+          "Something went wrong.\nCheck your internet connection and restart the app";
+      break;
     default:
       code = "Something went wrong,please try again later";
   }
