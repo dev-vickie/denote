@@ -1,6 +1,10 @@
+import 'dart:js';
+
 import 'package:denote/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/show_error.dart';
 
 class AuthService {
   static Future<void> signInEmailPassword(String email, String password) async {
@@ -16,7 +20,7 @@ class AuthService {
           backgroundColor: Colors.blue,
         ),
       );
-      print("done");
+      print("Done");
       //pop the loading indicator
       navigatorKey.currentState!.pop();
     } on FirebaseAuthException catch (error) {
@@ -65,6 +69,18 @@ class AuthService {
         ),
       );
     }
+  }
+
+  static Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: email,
+      );
+    } on FirebaseAuthException catch (e) {
+      navigatorKey.currentState!.pop();
+      print(e);
+    }
+    navigatorKey.currentState!.pop();
   }
 
   static Future signOut() async {

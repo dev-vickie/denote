@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
+import '../../main.dart';
+import '../utils/show_error.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/page_text.dart';
 import '../widgets/submit_button.dart';
@@ -14,6 +17,26 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: email,
+      );
+    } on FirebaseAuthException catch (e) {
+      navigatorKey.currentState!.pop();
+      showErrorMessage(e.code, context);
+    }
+    navigatorKey.currentState!.pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +99,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   GestureDetector(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Sent,Check your email"),
-                          ),
-                        );
+                        sendPasswordResetEmail(emailController.text);
                       }
                     },
                     child: const SubmitButton(
