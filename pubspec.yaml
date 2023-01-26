@@ -39,6 +39,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   firebase_core: ^2.4.1
   firebase_auth: ^4.2.5
+  cloud_firestore: ^4.3.1
 
 dev_dependencies:
   flutter_test:

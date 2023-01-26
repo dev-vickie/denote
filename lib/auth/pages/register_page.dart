@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
             password: password,
           )
           .then(
-            (value) => print(value.user!.uid),
+            (user) => print(user.user!.uid),
           );
       messengerKey.currentState!.showSnackBar(
         const SnackBar(

@@ -1,10 +1,6 @@
-import 'dart:js';
-
 import 'package:denote/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../utils/show_error.dart';
 
 class AuthService {
   static Future<void> signInEmailPassword(String email, String password) async {
