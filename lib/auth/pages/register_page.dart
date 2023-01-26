@@ -6,6 +6,7 @@ import '../../main.dart';
 import '../widgets/custom_textfield.dart';
 import '../widgets/page_text.dart';
 import '../widgets/submit_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -51,15 +52,31 @@ class _RegisterPageState extends State<RegisterPage> {
   //Formkey for form validation
   final _formKey = GlobalKey<FormState>();
   Future<void> createUserEmailPassword(String email, String password) async {
+    final firestore = FirebaseFirestore.instance;
+
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
+        email: email,
+        password: password,
+      )
           .then(
-            (user) => print(user.user!.uid),
-          );
+        (user) async {
+          final userId = user.user!.uid;
+          try {
+            await firestore.collection("users").doc(userId).set({
+              "username": nameController.text.trim(),
+              "userid": userId,
+              "email": emailController.text.trim(),
+              "course": selectedCourse,
+              "year": selectedYear,
+            });
+          } catch (e) {
+            showErrorMessage(e.toString(), context);
+          }
+        },
+      );
+      navigatorKey.currentState!.pop();
       messengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text("Sucess"),
