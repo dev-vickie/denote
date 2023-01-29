@@ -1,3 +1,4 @@
+import 'package:denote/firebase_storage/storage_service.dart';
 import 'package:flutter/material.dart';
 
 import 'firstpage_widgets.dart';
@@ -11,6 +12,12 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   @override
+  void initState() {
+    super.initState();
+    Storage.listAll();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final List categories = [
       'Transportation Planning',
@@ -18,6 +25,7 @@ class _FirstPageState extends State<FirstPage> {
       'Theory of Structures III',
       'Hydraulics'
     ];
+
     return Scaffold(
       body: ListView.builder(
         itemCount: categories.length,

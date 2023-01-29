@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       );
       navigatorKey.currentState!.pop();
 
-      //show success snackbar if account created successfully
+      //show success snackbar if sign in is successful
       messengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text("Login Sucess"),
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       print("done");
       //pop the loading indicator
     } on FirebaseAuthException catch (error) {
-      print(error.code);
+      debugPrint(error.toString());
       //pop the indicator on error
       navigatorKey.currentState!.pop();
       //show the error in the snackbar
