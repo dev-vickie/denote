@@ -1,4 +1,5 @@
 import 'package:denote/auth/firebase_service/firebase_auth.dart';
+import 'package:denote/firebase_storage/storage_service.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
 
@@ -22,6 +23,14 @@ var mainAppBar = AppBar(
       icon: const Icon(Icons.menu_book),
     );
   }),
+  actions: [
+    IconButton(
+      onPressed: () {
+        Storage.listAll();
+      },
+      icon: Icon(Icons.list),
+    )
+  ],
 );
 
 //----AppDrawer
