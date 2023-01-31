@@ -1,7 +1,7 @@
 import 'package:denote/firebase_storage/storage_service.dart';
 import 'package:flutter/material.dart';
-
-import 'firstpage_widgets.dart';
+import 'widgets/category_text.dart';
+import 'widgets/doc_item.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -11,12 +11,6 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  @override
-  void initState() {
-    super.initState();
-    Storage.listAll();
-  }
-
   @override
   Widget build(BuildContext context) {
     final List categories = [
