@@ -2,12 +2,19 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 final storage = FirebaseStorage.instance;
 
-class Storage {
-  static Future<List> listAll() async {
-    final results = await storage.ref("notes/bsccivil/3.2").listAll();
-    final prefs = results.prefixes;
-    print(prefs[0].name);
+class Fbstorage {
+  static Future<List<String>> listAllUnits() async {
+    final List<String> unitFinal = [];
+    final units = await storage.ref("notes/bscmechanical/4.2").listAll();
+    for (var item in units.prefixes) {
+      unitFinal.add(item.name);
+    }
+    return unitFinal;
+  }
 
-    return prefs;
+  static Future<ListResult> listAllDocs(String? unitName) async {
+    final results =
+        await storage.ref("notes/bscmechanical/4.2/$unitName").listAll();
+    return results;
   }
 }

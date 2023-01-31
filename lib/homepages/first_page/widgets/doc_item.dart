@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DocItem extends StatelessWidget {
+  final String? docName;
   const DocItem({
+    this.docName,
     super.key,
   });
 
@@ -37,22 +39,22 @@ class DocItem extends StatelessWidget {
             ),
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   Expanded(
                     flex: 4,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 5),
+                      padding: const EdgeInsets.only(left: 5),
                       child: Text(
-                        "Doc Name",
-                        style: TextStyle(
+                        docName ?? "",
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 4),
-                  Expanded(
+                  const SizedBox(width: 4),
+                  const Expanded(
                       flex: 1,
                       child: Icon(
                         Icons.download,

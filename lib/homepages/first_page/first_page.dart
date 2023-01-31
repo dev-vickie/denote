@@ -11,18 +11,26 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+  List<String>? categories; //Empty list to store categories
+  @override
+  void initState() {
+    super.initState();
+    loadUnits(); //load all categories on start
+  }
+
+  void loadUnits() async {
+    List<String>? unitNames = await Fbstorage.listAllUnits();
+
+    setState(() {
+      categories = unitNames; //Get all units and add to categories list
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List categories = [
-      'Transportation Planning',
-      'Calculus IV',
-      'Theory of Structures III',
-      'Hydraulics'
-    ];
-
     return Scaffold(
       body: ListView.builder(
-        itemCount: categories.length,
+        itemCount: categories?.length,
         itemBuilder: (context, index) {
           //return this for each course category
           return SizedBox(
@@ -45,11 +53,30 @@ class _FirstPageState extends State<FirstPage> {
                   ),
                   Expanded(
                     flex: 4,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
-                        return const DocItem(); //each document item in a category
+                    child: FutureBuilder(
+                      future: Fbstorage.listAllDocs(categories?[index]),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else if (snapshot.connectionState ==
+                                ConnectionState.done &&
+                            snapshot.hasData) {
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data?.items.length,
+                            itemBuilder: (context, index) {
+                              return DocItem(
+                                docName: snapshot.data?.items[index].name,
+                              ); //each document item in a category
+                            },
+                          );
+                        } else {
+                          return const Center(
+                            child: Text("Error"),
+                          );
+                        }
                       },
                     ),
                   ),

@@ -10,7 +10,7 @@ class CategoryTexts extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final List categories;
+  final List<String>? categories;
   final dynamic index;
 
   @override
@@ -21,7 +21,7 @@ class CategoryTexts extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(7.0),
           child: Text(
-            categories[index], //Name of the category
+            categories?[index] ?? "", //Name of the category
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ class CategoryTexts extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => DocumentsInEachCategoy(
-                categoryName: categories[index],
+                categoryName: categories?[index] ?? "",
               ),
             ),
           ),
