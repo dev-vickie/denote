@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../first_page/first_page.dart';
 import '../second_page/second_page.dart';
 import '../third_page/third_page.dart';
-import 'homepage_widgets.dart';
+import 'widgets/appbar.dart';
+import 'widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,9 +32,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //AppBar
-      appBar: mainAppBar,
+      appBar: const BuildAppBar(),
       //App Drawer
-      drawer: mainAppDrawer,
+      drawer: buildAppDrawer(),
       backgroundColor: Colors.white,
       //List of pages
       body: secondPages[selectedPage],

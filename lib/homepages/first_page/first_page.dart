@@ -19,7 +19,8 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   void loadUnits() async {
-    List<String>? unitNames = await Fbstorage.listAllUnits();
+    List<String>? unitNames = await Fbstorage.listAllUnits(
+        unitName: "bscmechanical", semester: "4.2");
 
     setState(() {
       categories = unitNames; //Get all units and add to categories list
@@ -56,6 +57,7 @@ class _FirstPageState extends State<FirstPage> {
                     child: FutureBuilder(
                       future: Fbstorage.listAllDocs(categories?[index]),
                       builder: (context, snapshot) {
+                        //TODO: Refine
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(
