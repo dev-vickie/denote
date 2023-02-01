@@ -19,8 +19,8 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   void loadUnits() async {
-    List<String>? unitNames = await Fbstorage.listAllUnits(
-        unitName: "bscmechanical", semester: "4.2");
+    List<String>? unitNames =
+        await Fbstorage.listAllUnits(course: "bscmechanical", semester: "4.2");
 
     setState(() {
       categories = unitNames; //Get all units and add to categories list

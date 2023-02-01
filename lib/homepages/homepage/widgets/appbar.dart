@@ -29,15 +29,6 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.menu_book),
         );
       }),
-      actions: [
-        IconButton(
-          onPressed: () {
-            //TODO: fetch from reg page
-            Fbstorage.listAllUnits(unitName: "bscmechanical", semester: "4.2");
-          },
-          icon: const Icon(Icons.list),
-        )
-      ],
     );
   }
 }

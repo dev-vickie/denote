@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String? selectedCourse = "Select Course";
-  String? selectedYear = "Year";
+  String? selectedSemester = "Sem";
   String? _confirmPassword;
 
   //List of courses/years in the drop down textfields - it is hard-coded for now
@@ -40,16 +40,13 @@ class _RegisterPageState extends State<RegisterPage> {
     "Bsc Civil",
     "Bsc Mechanical",
   ];
-  final List<String> yearsList = [
-    "Year",
-    "2022",
-    "2021",
-    "2020",
-    "2019",
-    "2018",
+  final List<String> semesterList = [
+    "Sem",
+    "4.2",
+    "3.2",
   ];
 
-  //Formkey for form validation 
+  //Formkey for form validation
   final _formKey = GlobalKey<FormState>();
   Future<void> createUserEmailPassword(String email, String password) async {
     final firestore = FirebaseFirestore.instance;
@@ -69,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
               "userid": userId,
               "email": emailController.text.trim(),
               "course": selectedCourse,
-              "year": selectedYear,
+              "semester": selectedSemester,
             });
           } catch (e) {
             showErrorMessage(e.toString(), context);
@@ -130,7 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 15),
 
-                  //Select Course and Year
+                  //Select Course and Semester
                   Row(
                     children: [
                       Expanded(
@@ -162,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               selectedCourse = value;
                             });
                           },
-                          items: coursesList //list of courses do here
+                          items: coursesList //list of courses go here
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem(
                                 value: value, child: Text(value));
@@ -170,13 +167,14 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                       Expanded(
-                        //Select Year dropdown
+                        //Select Semester dropdown
                         child: DropdownButtonFormField(
+                          //check if user has selected any semester
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Enter your year";
-                            } else if (value == "Year") {
-                              return "Select year";
+                              return "Enter your semester";
+                            } else if (value == "Sem") {
+                              return "Pick semester";
                             } else {
                               return null;
                             }
@@ -188,13 +186,14 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: const InputDecoration(
                             icon: Icon(Icons.view_timeline_rounded),
                           ),
-                          value: selectedYear,
+                          value: selectedSemester,
                           onChanged: (value) {
                             setState(() {
-                              selectedYear = value;
+                              selectedSemester =
+                                  value; //set the value as selected semester
                             });
                           },
-                          items: yearsList.map<DropdownMenuItem<String>>(
+                          items: semesterList.map<DropdownMenuItem<String>>(
                             (String value) {
                               return DropdownMenuItem(
                                 value: value,
@@ -294,11 +293,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            });
+                          context: context,
+                          builder: (context) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          },
+                        );
 
                         createUserEmailPassword(
                           emailController.text.trim(),
