@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../auth/firebase_service/firebase_auth.dart';
+import '../../../auth/firebase_auth/firebase_auth.dart';
 import '../../../constants/constants.dart';
 
 Widget buildAppDrawer() {

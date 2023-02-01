@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
               "username": nameController.text.trim(),
               "userid": userId,
               "email": emailController.text.trim(),
-              "course": selectedCourse,
+              "course": selectedCourse!.toLowerCase().replaceAll(" ", ""),
               "semester": selectedSemester,
             });
           } catch (e) {
@@ -73,7 +73,6 @@ class _RegisterPageState extends State<RegisterPage> {
           }
         },
       );
-      navigatorKey.currentState!.pop();
       messengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text("Sucess"),

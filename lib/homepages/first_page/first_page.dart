@@ -1,5 +1,7 @@
 import 'package:denote/firebase_storage/storage_service.dart';
 import 'package:flutter/material.dart';
+import '../../auth/firebase_auth/firebase_auth.dart';
+import '../../firebase_storage/firestore_service.dart';
 import 'widgets/category_text.dart';
 import 'widgets/doc_item.dart';
 
@@ -12,18 +14,29 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   List<String>? categories; //Empty list to store categories
+  Map<String, String>? userData;
   @override
   void initState() {
     super.initState();
-    loadUnits(); //load all categories on start
+    getCategories();
+    getUserData();
+    AuthService.getCurrentUser();
+    Fbfirestore.getUserData();
   }
 
-  void loadUnits() async {
-    List<String>? unitNames =
-        await Fbstorage.listAllUnits(course: "bscmechanical", semester: "4.2");
-
+  void getCategories() async {
+    //load all categories on start
+    var loadedCategories = await Fbstorage.loadUnits();
     setState(() {
-      categories = unitNames; //Get all units and add to categories list
+      categories = loadedCategories;
+    });
+  }
+
+  void getUserData() async {
+    //load all categories on start
+    var loadedUserData = await Fbfirestore.getUserData();
+    setState(() {
+      userData = loadedUserData;
     });
   }
 
@@ -55,7 +68,11 @@ class _FirstPageState extends State<FirstPage> {
                   Expanded(
                     flex: 4,
                     child: FutureBuilder(
-                      future: Fbstorage.listAllDocs(categories?[index]),
+                      future: Fbstorage.listAllDocs(
+                        course: userData?["course"],
+                        semester: userData?["semester"],
+                        unitName: categories?[index],
+                      ),
                       builder: (context, snapshot) {
                         //TODO: Refine
                         if (snapshot.connectionState ==

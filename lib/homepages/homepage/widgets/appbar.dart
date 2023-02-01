@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../constants/constants.dart';
-import '../../../firebase_storage/storage_service.dart';
 
 class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BuildAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(100);
+  Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,11 @@ class DocumentsInEachCategoy extends StatelessWidget {
         title: Text(categoryName),
       ),
       body: FutureBuilder(
-        future: Fbstorage.listAllDocs(categoryName),
+        future: Fbstorage.listAllDocs(
+          course: "bscmechanical",
+          semester: "4.2",
+          unitName: categoryName,
+        ),
         builder: (BuildContext context, AsyncSnapshot<ListResult> snapshot) {
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {

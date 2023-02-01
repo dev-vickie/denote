@@ -79,6 +79,17 @@ class AuthService {
     navigatorKey.currentState!.pop();
   }
 
+  static String? getCurrentUser() {
+    //get user id to use as parameter in getting user data
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final uid = user.uid;
+      return uid;
+    } else {
+      return null;
+    }
+  }
+
   static Future signOut() async {
     await FirebaseAuth.instance.signOut();
   }
