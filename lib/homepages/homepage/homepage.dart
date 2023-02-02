@@ -1,6 +1,8 @@
 import 'package:denote/constants/constants.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
+import '../../firebase_storage/firestore_service.dart';
+import '../../firebase_storage/storage_service.dart';
 import '../first_page/first_page.dart';
 import '../second_page/second_page.dart';
 import '../third_page/third_page.dart';
@@ -23,13 +25,42 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  final List<Widget> secondPages = [
-    const FirstPage(),
-    const SecondPage(),
-    const ThirdPage(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    getCategories();
+    getUserData();
+  }
+
+  List<String>? categories; //Empty list to store categories
+  Map<String, String>? userData;
+
+  void getCategories() async {
+    //load all categories on start
+    var loadedCategories = await Fbstorage.loadUnits();
+    setState(() {
+      categories = loadedCategories;
+    });
+  }
+
+  void getUserData() async {
+    //load all categories on start
+    var loadedUserData = await Fbfirestore.getUserData();
+    setState(() {
+      userData = loadedUserData;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> secondPages = [
+      FirstPage(
+        categories: categories,
+        userData: userData,
+      ),
+      const SecondPage(),
+      const ThirdPage(),
+    ];
     return Scaffold(
       //AppBar
       appBar: const BuildAppBar(),
