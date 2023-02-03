@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  TextEditingController? controller;
+  final TextEditingController? controller;
   final String hintText;
   final IconData icon;
   final String? Function(String?)? validator;
