@@ -1,4 +1,4 @@
-import 'package:denote/firebase_storage/storage_service.dart';
+import 'package:denote/firebase_service/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'widgets/category_text.dart';
 import 'widgets/doc_item.dart';

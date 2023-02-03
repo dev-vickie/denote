@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DocItem extends StatelessWidget {
   final String? docName;
   const DocItem({
-    this.docName,
+    required this.docName,
     super.key,
   });
 
@@ -12,7 +12,7 @@ class DocItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(7.0),
       child: Container(
-        width: 230,
+        width: 200,
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 78, 98, 134),
           borderRadius: BorderRadius.circular(6),

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
 import '../../main.dart';
 import '../utils/show_error.dart';
-import '../widgets/custom_textfield.dart';
-import '../widgets/page_text.dart';
-import '../widgets/submit_button.dart';
+import '../../widgets/custom_textfield.dart';
+import '../../widgets/page_text.dart';
+import '../../widgets/submit_button.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;

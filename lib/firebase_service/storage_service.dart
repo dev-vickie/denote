@@ -1,4 +1,4 @@
-import 'package:denote/firebase_storage/firestore_service.dart';
+import 'package:denote/firebase_service/firestore_service.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 final storage = FirebaseStorage.instance;

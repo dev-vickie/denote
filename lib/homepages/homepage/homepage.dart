@@ -1,8 +1,8 @@
 import 'package:denote/constants/constants.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
-import '../../firebase_storage/firestore_service.dart';
-import '../../firebase_storage/storage_service.dart';
+import '../../firebase_service/firestore_service.dart';
+import '../../firebase_service/storage_service.dart';
 import '../first_page/first_page.dart';
 import '../second_page/second_page.dart';
 import '../third_page/third_page.dart';

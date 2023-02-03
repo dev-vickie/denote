@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
 import '../../main.dart';
-import '../widgets/custom_textfield.dart';
-import '../widgets/page_text.dart';
-import '../widgets/submit_button.dart';
+import '../../widgets/custom_textfield.dart';
+import '../../widgets/page_text.dart';
+import '../../widgets/submit_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
