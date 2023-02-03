@@ -3,6 +3,7 @@ import 'package:denote/homepages/first_page/widgets/doc_item.dart';
 import 'package:denote/widgets/custom_textfield.dart';
 import 'package:denote/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
