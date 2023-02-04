@@ -35,6 +35,7 @@ class _FirstPageState extends State<FirstPage> {
                           flex: 1,
                           //custom widget to display the category name
                           child: CategoryTexts(
+                            userData: widget.userData,
                             categories: widget.categories,
                             index: index,
                           ),

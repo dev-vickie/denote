@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:denote/firebase_service/firestore_service.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 final storage = FirebaseStorage.instance;
@@ -36,5 +39,17 @@ class Fbstorage {
       return unitNames;
     }
     return null;
+  }
+
+  static Future uploadFile({
+    required String? unitName,
+    required String? course,
+    required String? semester,
+    required PlatformFile? pickedFile,
+  }) async {
+    final path = 'notes/$course/$semester/$unitName/${pickedFile?.name}';
+    final file = File(pickedFile!.path!);
+    final ref = FirebaseStorage.instance.ref().child(path);
+    ref.putFile(file);
   }
 }

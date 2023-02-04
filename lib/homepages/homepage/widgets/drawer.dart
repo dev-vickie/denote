@@ -4,7 +4,7 @@ import '../../../auth/firebase_auth/firebase_auth.dart';
 import '../../../constants/constants.dart';
 import '../../admin/admin_page.dart';
 
-Widget buildAppDrawer() {
+Widget buildAppDrawer(Map<String, String>? userData) {
   return Drawer(
     backgroundColor: kMainDarkColor,
     child: Column(
@@ -23,7 +23,9 @@ Widget buildAppDrawer() {
           onTap: () {
             navigatorKey.currentState!.push(
               MaterialPageRoute(
-                builder: (context) => const AdminPage(),
+                builder: (context) => AdminPage(
+                  userData: userData,
+                ),
               ),
             );
           },

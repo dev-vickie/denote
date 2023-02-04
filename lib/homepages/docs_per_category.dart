@@ -4,10 +4,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class DocumentsInEachCategoy extends StatelessWidget {
+  final Map<String, String>? userData;
+
   final String categoryName;
   const DocumentsInEachCategoy({
     super.key,
     required this.categoryName,
+    required this.userData,
   });
 
   @override
@@ -19,8 +22,8 @@ class DocumentsInEachCategoy extends StatelessWidget {
       ),
       body: FutureBuilder(
         future: Fbstorage.listAllDocs(
-          course: "bscmechanical",
-          semester: "4.2",
+          course: userData?["course"],
+          semester: userData?["semester"],
           unitName: categoryName,
         ),
         builder: (BuildContext context, AsyncSnapshot<ListResult> snapshot) {

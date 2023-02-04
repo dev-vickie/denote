@@ -27,9 +27,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     getCategories();
     getUserData();
+    super.initState();
   }
 
   List<String>? categories; //Empty list to store categories
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
       //AppBar
       appBar: const BuildAppBar(),
       //App Drawer
-      drawer: buildAppDrawer(),
+      drawer: buildAppDrawer(userData),
       backgroundColor: Colors.white,
       //List of pages
       body: secondPages[selectedPage],
