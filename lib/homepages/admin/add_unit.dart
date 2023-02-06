@@ -158,7 +158,7 @@ class _AdminPageState extends State<AdminPage> {
                                 ),
                               );
 
-                              Navigator.of(context).push(
+                              Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                   builder: (context) => const HomePage(),
                                 ),

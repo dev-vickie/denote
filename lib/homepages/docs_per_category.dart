@@ -19,6 +19,18 @@ class DocumentsInEachCategoy extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: kMainDarkColor,
         title: Text(categoryName!),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Padding(
+              padding: EdgeInsets.only(right: 15),
+              child: Icon(
+                Icons.add,
+                size: 32,
+              ),
+            ),
+          )
+        ],
       ),
       body: FutureBuilder(
         future: Fbstorage.listAllDocs(
