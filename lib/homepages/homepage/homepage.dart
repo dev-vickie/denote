@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../firebase_service/firestore_service.dart';
 import '../../firebase_service/storage_service.dart';
 import '../first_page/first_page.dart';
-import '../second_page/second_page.dart';
+import '../units/second_page.dart';
 import '../third_page/third_page.dart';
 import 'widgets/appbar.dart';
 import 'widgets/drawer.dart';
@@ -58,7 +58,10 @@ class _HomePageState extends State<HomePage> {
         categories: categories,
         userData: userData,
       ),
-      const SecondPage(),
+      SecondPage(
+        categories: categories,
+        userData: userData,
+      ),
       const ThirdPage(),
     ];
     return Scaffold(

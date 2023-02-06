@@ -1,3 +1,4 @@
+import 'package:denote/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class DocItem extends StatelessWidget {
@@ -14,7 +15,7 @@ class DocItem extends StatelessWidget {
       child: Container(
         width: 200,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 78, 98, 134),
+          color: kMainLightColor,
           borderRadius: BorderRadius.circular(6),
         ),
         child: Column(
@@ -47,7 +48,7 @@ class DocItem extends StatelessWidget {
                       child: Text(
                         docName ?? "",
                         style: const TextStyle(
-                          color: Colors.white70,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

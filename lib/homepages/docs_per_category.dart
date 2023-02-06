@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class DocumentsInEachCategoy extends StatelessWidget {
   final Map<String, String>? userData;
+  final String? categoryName;
 
-  final String categoryName;
   const DocumentsInEachCategoy({
     super.key,
     required this.categoryName,
@@ -18,7 +18,7 @@ class DocumentsInEachCategoy extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kMainDarkColor,
-        title: Text(categoryName),
+        title: Text(categoryName!),
       ),
       body: FutureBuilder(
         future: Fbstorage.listAllDocs(
