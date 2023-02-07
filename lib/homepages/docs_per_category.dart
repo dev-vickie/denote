@@ -1,5 +1,6 @@
 import 'package:denote/constants/constants.dart';
 import 'package:denote/firebase_service/storage_service.dart';
+import 'package:denote/homepages/admin/add_document.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,15 @@ class DocumentsInEachCategoy extends StatelessWidget {
         title: Text(categoryName!),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => AddDocument(
+              //       categoryName: categoryName,
+              //     ),
+              //   ),
+              // );
+            },
             icon: const Padding(
               padding: EdgeInsets.only(right: 15),
               child: Icon(

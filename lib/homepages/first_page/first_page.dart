@@ -90,12 +90,7 @@ class _FirstPageState extends State<FirstPage> {
               },
             )
           : const Center(
-              child: Text(
-                "No units uploaded yet.\nContact your classrep for more info",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
+              child: CircularProgressIndicator(),
             ),
     );
   }

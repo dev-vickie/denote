@@ -2,7 +2,7 @@ import 'package:denote/main.dart';
 import 'package:flutter/material.dart';
 import '../../../auth/firebase_auth/firebase_auth.dart';
 import '../../../constants/constants.dart';
-import '../../admin/admin_page.dart';
+import '../../admin/add_unit.dart';
 
 Widget buildAppDrawer(Map<String, String>? userData) {
   return Drawer(
@@ -23,7 +23,7 @@ Widget buildAppDrawer(Map<String, String>? userData) {
           onTap: () {
             navigatorKey.currentState!.push(
               MaterialPageRoute(
-                builder: (context) => AdminPage(
+                builder: (context) => AddUnit(
                   userData: userData,
                 ),
               ),

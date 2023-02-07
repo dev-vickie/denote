@@ -1,26 +1,22 @@
-import 'dart:io';
 import 'package:denote/constants/constants.dart';
-import 'package:denote/firebase_service/firestore_service.dart';
 import 'package:denote/homepages/first_page/widgets/doc_item.dart';
 import 'package:denote/homepages/homepage/homepage.dart';
 import 'package:denote/main.dart';
 import 'package:denote/widgets/custom_textfield.dart';
 import 'package:denote/widgets/submit_button.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-
 import '../../firebase_service/storage_service.dart';
 
-class AdminPage extends StatefulWidget {
+class AddUnit extends StatefulWidget {
   final Map<String, String>? userData;
-  const AdminPage({super.key, required this.userData});
+  const AddUnit({super.key, required this.userData});
 
   @override
-  State<AdminPage> createState() => _AdminPageState();
+  State<AddUnit> createState() => _AddUnitState();
 }
 
-class _AdminPageState extends State<AdminPage> {
+class _AddUnitState extends State<AddUnit> {
   final unitNameController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
@@ -158,11 +154,12 @@ class _AdminPageState extends State<AdminPage> {
                                 ),
                               );
 
-                              Navigator.of(context).pushReplacement(
+                              Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => const HomePage(),
                                 ),
                               );
+                              Navigator.pop(context); //TODO: Add pop route
                             });
                           },
                           child: const SubmitButton(buttonText: "Add unit"),

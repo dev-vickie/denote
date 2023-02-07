@@ -13,6 +13,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         AppBar(
           backgroundColor: kMainDarkColor,
+          centerTitle: true,
           title: const Text(
             'Denote',
             style: TextStyle(
@@ -32,18 +33,13 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             },
           ),
-          actions: const [Icon(Icons.notifications)],
+          actions: const [
+            Icon(
+              Icons.add,
+              size: 30,
+            )
+          ],
         ),
-        // const SizedBox(height: 10),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //   children: [
-        //     Text(
-        //       "Bsc Civil",
-        //       style: TextStyle(fontSize: 18, color: kMainDarkColor),
-        //     ),
-        //   ],
-        // ),
       ],
     );
   }

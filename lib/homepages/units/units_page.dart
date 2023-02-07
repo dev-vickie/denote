@@ -34,7 +34,7 @@ class _SecondPageState extends State<SecondPage> {
             );
           },
           child: Padding(
-            padding: const EdgeInsets.only(left: 12, right: 3, top: 13),
+            padding: const EdgeInsets.only(left: 7, right: 7, top: 13),
             child: Container(
               decoration: BoxDecoration(
                 color: kMainLightColor,
