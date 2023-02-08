@@ -35,7 +35,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           actions: const [
             Icon(
-              Icons.add,
+              Icons.notifications,
               size: 30,
             )
           ],

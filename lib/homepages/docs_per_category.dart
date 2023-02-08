@@ -3,6 +3,7 @@ import 'package:denote/firebase_service/storage_service.dart';
 import 'package:denote/homepages/admin/add_document.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DocumentsInEachCategoy extends StatelessWidget {
   final Map<String, String>? userData;
@@ -13,6 +14,11 @@ class DocumentsInEachCategoy extends StatelessWidget {
     required this.categoryName,
     required this.userData,
   });
+
+  Future downloadDoc(Reference ref) async {
+    final url = await ref.getDownloadURL();
+    final temporaryDirectory = await getTemporaryDirectory();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +71,10 @@ class DocumentsInEachCategoy extends StatelessWidget {
                       child: const Icon(
                         Icons.menu_book_rounded,
                       ),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.download),
                     ),
                   ),
                 );
