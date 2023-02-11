@@ -18,8 +18,12 @@ class ThirdPage extends StatelessWidget {
             trailing: Icon(Icons.notifications),
           ),
           ListTile(
-            title: Text('Choose Theme'),
-            trailing: Icon(Icons.sunny),
+            trailing: Icon(Icons.question_mark),
+            title: Text('FAQ\'s'),
+          ),
+          ListTile(
+            trailing: Icon(Icons.share),
+            title: Text('Share'),
           ),
           ListTile(
             trailing: Icon(Icons.question_mark),
@@ -28,7 +32,7 @@ class ThirdPage extends StatelessWidget {
           ListTile(
             trailing: Icon(Icons.share),
             title: Text('Share'),
-          )
+          ),
         ],
       ),
     );
