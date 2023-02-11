@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:denote/constants/constants.dart';
 import 'package:denote/firebase_service/storage_service.dart';
-import 'package:denote/homepages/admin/add_document.dart';
-import 'package:denote/main.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -20,21 +18,6 @@ class DocumentsInEachCategoy extends StatelessWidget {
     required this.userData,
   });
 
-  Future<void> downloadDoc(Reference ref) async {
-    //download url
-    final url = await ref.getDownloadURL();
-    Dio dio = Dio();
-    final tempDir = await getApplicationDocumentsDirectory();
-    //path to save
-    final path = '${tempDir.path}/${ref.name}';
-    try {
-      await dio.download(url, path);
-      print("downlaoded");
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,15 +26,7 @@ class DocumentsInEachCategoy extends StatelessWidget {
         title: Text(categoryName!),
         actions: [
           IconButton(
-            onPressed: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => AddDocument(
-              //       categoryName: categoryName,
-              //     ),
-              //   ),
-              // );
-            },
+            onPressed: () {},
             icon: const Padding(
               padding: EdgeInsets.only(right: 15),
               child: Icon(
