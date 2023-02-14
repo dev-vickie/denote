@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
-class DocumentsInEachCategoy extends StatelessWidget {
+class DocumentsInEachCategoy extends StatefulWidget {
   final Map<String, String>? userData;
   final String? categoryName;
 
@@ -19,11 +19,16 @@ class DocumentsInEachCategoy extends StatelessWidget {
   });
 
   @override
+  State<DocumentsInEachCategoy> createState() => _DocumentsInEachCategoyState();
+}
+
+class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kMainDarkColor,
-        title: Text(categoryName!),
+        title: Text(widget.categoryName!),
         actions: [
           IconButton(
             onPressed: () {},
@@ -39,9 +44,9 @@ class DocumentsInEachCategoy extends StatelessWidget {
       ),
       body: FutureBuilder(
         future: Fbstorage.listAllDocs(
-          course: userData?["course"],
-          semester: userData?["semester"],
-          unitName: categoryName,
+          course: widget.userData?["course"],
+          semester: widget.userData?["semester"],
+          unitName: widget.categoryName,
         ),
         builder: (BuildContext context, AsyncSnapshot<ListResult> snapshot) {
           if (snapshot.connectionState == ConnectionState.done &&
@@ -98,6 +103,8 @@ class DocumentsInEachCategoy extends StatelessWidget {
     final fileName = doc.name;
     final docUrl = await doc.getDownloadURL();
     final file = await downloadFile(docUrl, fileName);
+    setState(() {});
+
     if (file == null) return;
     print('Path: ${file.path}');
 
