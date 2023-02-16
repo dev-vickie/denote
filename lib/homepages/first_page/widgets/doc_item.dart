@@ -54,14 +54,14 @@ class DocItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  const Expanded(
-                      flex: 1,
-                      child: Icon(
-                        Icons.download,
-                        color: Colors.white,
-                        size: 28,
-                      ))
+                  // const SizedBox(width: 4),
+                  // const Expanded(
+                  //     flex: 1,
+                  //     child: Icon(
+                  //       Icons.download,
+                  //       color: Colors.white,
+                  //       size: 28,
+                  //     ))
                 ],
               ),
             )

@@ -50,6 +50,6 @@ class Fbstorage {
     final path = 'notes/$course/$semester/$unitName/${pickedFile?.name}';
     final file = File(pickedFile!.path!);
     final ref = FirebaseStorage.instance.ref().child(path);
-    ref.putFile(file);
+    await ref.putFile(file);
   }
 }
