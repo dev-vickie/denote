@@ -82,6 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
               "email": emailController.text.trim(),
               "course": selectedCourse!.toLowerCase().replaceAll(" ", ""),
               "semester": selectedSemester,
+              "usertype": "user",
             });
           } catch (e) {
             showErrorMessage(e.toString(), context);
