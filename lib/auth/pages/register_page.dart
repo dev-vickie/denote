@@ -63,9 +63,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //Formkey for form validation
   final _formKey = GlobalKey<FormState>();
+
   Future<void> createUserEmailPassword(String email, String password) async {
     final firestore = FirebaseFirestore.instance;
-
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
