@@ -12,9 +12,16 @@ class Fbfirestore {
         // retrieve the courseName and semester fields from the document
         String course = snapshot.get("course");
         String semester = snapshot.get("semester");
+        String usertype = snapshot.get("usertype");
+        String email = snapshot.get("email");
         // return the values as a map
 
-        return {"course": course, "semester": semester};
+        return {
+          "course": course,
+          "semester": semester,
+          "usertype": usertype,
+          "email": email,
+        };
       } else {
         print("User data not found");
         return null;

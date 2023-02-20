@@ -5,6 +5,7 @@ import '../../../constants/constants.dart';
 import '../../admin/add_unit.dart';
 
 Widget buildAppDrawer(Map<String, String>? userData) {
+  final usertype = userData?['usertype'];
   return Drawer(
     backgroundColor: kMainDarkColor,
     child: Column(
@@ -19,6 +20,7 @@ Widget buildAppDrawer(Map<String, String>? userData) {
             ),
           )),
         ),
+        (usertype == "admin")?
         ListTile(
           onTap: () {
             navigatorKey.currentState!.push(
@@ -41,7 +43,7 @@ Widget buildAppDrawer(Map<String, String>? userData) {
             size: 20,
             color: Colors.white,
           ),
-        ),
+        ): const Offstage(),
         const ListTile(
           onTap: AuthService.signOut,
           title: Text(
