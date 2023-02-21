@@ -120,7 +120,11 @@ class _AddUnitState extends State<AddUnit> {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              DocItem(docName: pickedFile?.name),
+                              DocItem(
+                                //TODO : Doc is untyped here
+                                doc: null,
+                                docName: pickedFile?.name,
+                              ),
                             ],
                           ),
                         )

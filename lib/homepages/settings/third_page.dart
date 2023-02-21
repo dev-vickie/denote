@@ -63,17 +63,14 @@ class ThirdPage extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                  onTap: () {
-                    print(firstLetter);
-                  },
-                  title: Text('Name'),
+                  title: const Text('Name'),
                   subtitle: Text(username ?? "user name"),
-                  trailing: Icon(Icons.notifications),
+                  trailing: const Icon(Icons.notifications),
                 ),
                 ListTile(
-                  title: Text('Email'),
+                  title: const Text('Email'),
                   subtitle: Text(email ?? "user email"),
-                  trailing: Icon(Icons.supervisor_account_outlined),
+                  trailing: const Icon(Icons.supervisor_account_outlined),
                 ),
               ],
             ),

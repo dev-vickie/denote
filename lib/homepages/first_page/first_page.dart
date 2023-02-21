@@ -61,7 +61,9 @@ class _FirstPageState extends State<FirstPage> {
                                   scrollDirection: Axis.horizontal,
                                   itemCount: snapshot.data?.items.length,
                                   itemBuilder: (context, index) {
+                                    final doc = snapshot.data!.items[index];
                                     return DocItem(
+                                      doc: doc,
                                       docName: snapshot.data?.items[index].name,
                                     ); //each document item in a category
                                   },

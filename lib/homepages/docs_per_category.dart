@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../firebase_service/download_doc.dart';
 import '../main.dart';
 
 class DocumentsInEachCategoy extends StatefulWidget {
@@ -111,7 +112,7 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
                           );
                         },
                       );
-                      openFile(doc).then(
+                      Download.openFile(doc).then(
                         (value) => Navigator.pop(context),
                       );
                     },
@@ -139,37 +140,6 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
         },
       ),
     );
-  }
-
-  Future openFile(Reference doc) async {
-    final fileName = doc.name;
-    final docUrl = await doc.getDownloadURL();
-    final file = await downloadFile(docUrl, fileName);
-    if (file == null) return;
-    print('Path: ${file.path}');
-
-    OpenFilex.open(file.path);
-  }
-
-  Future<File?> downloadFile(String url, String name) async {
-    final appStorage = await getApplicationDocumentsDirectory();
-    final file = File('${appStorage.path}/$name');
-    try {
-      final response = await Dio().get(
-        url,
-        options: Options(
-          responseType: ResponseType.bytes,
-          followRedirects: false,
-          receiveTimeout: 0,
-        ),
-      );
-      final raf = file.openSync(mode: FileMode.write);
-      raf.writeFromSync(response.data);
-      await raf.close();
-      return file;
-    } catch (e) {
-      return null;
-    }
   }
 }
 
@@ -219,6 +189,8 @@ class SelectedDocPage extends StatelessWidget {
               height: 200,
               width: 300,
               child: DocItem(
+                //TODO: doc is untyped
+                doc: null,
                 docName: pickedFile!.name,
               ),
             ),
