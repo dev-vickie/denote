@@ -25,6 +25,5 @@ Email-Password Authentication is done by the firebase_auth package
 ## Firebase Firestore
 User data is stored in firebase cloud firestore which is used to retrieve the notes as per their course
 
-##Firebase Storage
-All the notes are stored in firebase storage in the following order:
-* course * semester * unit
+## Firebase Storage
+All the notes are stored in firebase storage in the _course/semester/unit_ order
