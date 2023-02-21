@@ -1,5 +1,5 @@
-import 'package:denote/auth/pages/auth_controller.dart';
 import 'package:denote/firebase_options.dart';
+import 'package:denote/splash.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       scaffoldMessengerKey: messengerKey,
       title: 'Easy access',
       debugShowCheckedModeBanner: false,
-      home: const AuthPage(),
+      home: const Splash(),
     );
   }
 }

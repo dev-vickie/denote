@@ -24,6 +24,7 @@ Widget buildAppDrawer(Map<String, String>? userData) {
         (usertype == "admin")
             ? ListTile(
                 onTap: () {
+                  navigatorKey.currentState!.pop();
                   navigatorKey.currentState!.push(
                     MaterialPageRoute(
                       builder: (context) => AddUnit(

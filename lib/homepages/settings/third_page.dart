@@ -8,8 +8,8 @@ class ThirdPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final username = userData!["username"];
-    final email = userData!["email"];
+    final username = userData?["username"];
+    final email = userData?["email"];
     final firstLetter = username?.substring(0, 1).toUpperCase();
     return Scaffold(
       body: Column(

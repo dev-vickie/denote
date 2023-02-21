@@ -1,17 +1,10 @@
-import 'dart:io';
-
 import 'package:denote/auth/utils/show_error.dart';
 import 'package:denote/constants/constants.dart';
 import 'package:denote/firebase_service/storage_service.dart';
-import 'package:denote/homepages/admin/add_document.dart';
 import 'package:denote/homepages/first_page/widgets/doc_item.dart';
-import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:open_filex/open_filex.dart';
-import 'package:path_provider/path_provider.dart';
-
 import '../firebase_service/download_doc.dart';
 import '../main.dart';
 
@@ -201,6 +194,7 @@ class SelectedDocPage extends StatelessWidget {
               color: kMainLightColor,
               onPressed: () async {
                 showDialog(
+                  barrierDismissible: false,
                   context: context,
                   builder: (context) {
                     return const Center(

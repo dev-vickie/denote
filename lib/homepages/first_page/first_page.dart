@@ -3,22 +3,17 @@ import 'package:flutter/material.dart';
 import 'widgets/category_text.dart';
 import 'widgets/doc_item.dart';
 
-class FirstPage extends StatefulWidget {
+class FirstPage extends StatelessWidget {
   final List<String>? categories;
   final Map<String, String>? userData;
   const FirstPage({super.key, this.categories, this.userData});
 
   @override
-  State<FirstPage> createState() => _FirstPageState();
-}
-
-class _FirstPageState extends State<FirstPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.categories != null && widget.categories!.isNotEmpty
+      body: categories != null && categories!.isNotEmpty
           ? ListView.builder(
-              itemCount: widget.categories?.length,
+              itemCount: categories?.length,
               itemBuilder: (context, index) {
                 //return this for each course category
                 return SizedBox(
@@ -35,8 +30,8 @@ class _FirstPageState extends State<FirstPage> {
                           flex: 1,
                           //custom widget to display the category name
                           child: CategoryTexts(
-                            userData: widget.userData,
-                            categories: widget.categories,
+                            userData: userData,
+                            categories: categories,
                             index: index,
                           ),
                         ),
@@ -44,9 +39,9 @@ class _FirstPageState extends State<FirstPage> {
                           flex: 4,
                           child: FutureBuilder(
                             future: Fbstorage.listAllDocs(
-                              course: widget.userData?["course"],
-                              semester: widget.userData?["semester"],
-                              unitName: widget.categories?[index],
+                              course: userData?["course"],
+                              semester: userData?["semester"],
+                              unitName: categories?[index],
                             ),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
@@ -91,9 +86,14 @@ class _FirstPageState extends State<FirstPage> {
                 );
               },
             )
-          : const Center(
-              child: CircularProgressIndicator(),
-            ),
+          : (categories?.length == 0)
+              ? const Center(
+                  child: Text(
+                      "No units for this course yet.\nContact your classrep for assistance"),
+                )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                ),
     );
   }
 }

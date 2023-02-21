@@ -14,13 +14,40 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
         AppBar(
           backgroundColor: kMainDarkColor,
           centerTitle: true,
-          title: const Text(
-            'Denote',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Denote',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.blue,
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(2),
+                  child: Text(
+                    "Beta",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           elevation: 0,
           leading: Builder(

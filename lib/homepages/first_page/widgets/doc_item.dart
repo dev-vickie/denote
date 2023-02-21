@@ -31,7 +31,7 @@ class DocItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(7.0),
         child: Container(
-          width: 200,
+          width: 190,
           decoration: BoxDecoration(
             color: kMainLightColor,
             borderRadius: BorderRadius.circular(6),
