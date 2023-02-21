@@ -2,9 +2,11 @@
 
 A documents-sharing app using firebase and flutter.
 
-## Getting Started
+## Introduction
 
-This project is a starting point for a Flutter application.
+Denote is an opensource application that i am building for my classmates to easily manage and access class notes.
+![auth_login](https://user-images.githubusercontent.com/56781148/220371846-23169c59-8942-4c83-9a32-1b8c258ac0b2.png)
+
 
 A few resources to get you started if this is your first Flutter project:
 
