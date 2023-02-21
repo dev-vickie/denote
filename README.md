@@ -1,4 +1,4 @@
-# denote
+# Denote
 
 A documents-sharing app using firebase and flutter.
 
