@@ -8,42 +8,58 @@ Widget buildAppDrawer(Map<String, String>? userData) {
   final usertype = userData?['usertype'];
   return Drawer(
     backgroundColor: kMainDarkColor,
-    child: Column(
+    child: ListView(
       children: [
-        const DrawerHeader(
-          child: Center(
-              child: Text(
-            'APP LOGO',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
+        DrawerHeader(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          child: SizedBox(
+            height: double.maxFinite,
+            width: double.maxFinite,
+            child: Image.asset(
+              "assets/main-logo.png",
+              fit: BoxFit.cover,
             ),
-          )),
+          ),
         ),
-        (usertype == "admin")?
-        ListTile(
-          onTap: () {
-            navigatorKey.currentState!.push(
-              MaterialPageRoute(
-                builder: (context) => AddUnit(
-                  userData: userData,
+        (usertype == "admin")
+            ? ListTile(
+                onTap: () {
+                  navigatorKey.currentState!.push(
+                    MaterialPageRoute(
+                      builder: (context) => AddUnit(
+                        userData: userData,
+                      ),
+                    ),
+                  );
+                },
+                title: const Text(
+                  "Admin",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            );
-          },
-          title: const Text(
-            "Admin",
+                trailing: const Icon(
+                  Icons.admin_panel_settings_outlined,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              )
+            : const Offstage(),
+        const ListTile(
+          title: Text(
+            "About",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          trailing: const Icon(
-            Icons.admin_panel_settings_outlined,
+          trailing: Icon(
+            Icons.info,
             size: 20,
             color: Colors.white,
           ),
-        ): const Offstage(),
+        ),
         const ListTile(
           onTap: AuthService.signOut,
           title: Text(
@@ -58,7 +74,7 @@ Widget buildAppDrawer(Map<String, String>? userData) {
             size: 20,
             color: Colors.white,
           ),
-        )
+        ),
       ],
     ),
   );

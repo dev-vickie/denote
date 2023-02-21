@@ -14,6 +14,7 @@ class Fbfirestore {
         String semester = snapshot.get("semester");
         String usertype = snapshot.get("usertype");
         String email = snapshot.get("email");
+        String username = snapshot.get("username");
         // return the values as a map
 
         return {
@@ -21,6 +22,7 @@ class Fbfirestore {
           "semester": semester,
           "usertype": usertype,
           "email": email,
+          "username": username,
         };
       } else {
         print("User data not found");

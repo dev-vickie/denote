@@ -22,7 +22,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
               fontSize: 25,
             ),
           ),
-          shadowColor: kMainDarkColor,
+          elevation: 0,
           leading: Builder(
             builder: (context) {
               return IconButton(
