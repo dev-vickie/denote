@@ -11,21 +11,13 @@ The core objectives are:
  * Save on space taken on the notes when stored locally.
  * Students can access notes of previous semesters.
 
-# Stack
+## Stack
 * Flutter UI
 * Firebase
 
 
-## Main Features
-#
-![auth_login](https://user-images.githubusercontent.com/56781148/220371846-23169c59-8942-4c83-9a32-1b8c258ac0b2.png)
+# Main Features
+# Firebase Auth
+Email-Password Authentication is done by the firebase_auth package
 
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* login ![auth_login](https://user-images.githubusercontent.com/56781148/220371846-23169c59-8942-4c83-9a32-1b8c258ac0b2.png)
