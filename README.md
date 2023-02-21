@@ -20,4 +20,4 @@ The core objectives are:
 # Firebase Auth
 Email-Password Authentication is done by the firebase_auth package
 * login
-  ![auth_login](https://user-images.githubusercontent.com/56781148/220371846-23169c59-8942-4c83-9a32-1b8c258ac0b2.png)
+![auth_login](https://user-images.githubusercontent.com/56781148/220371846-23169c59-8942-4c83-9a32-1b8c258ac0b2.png)
