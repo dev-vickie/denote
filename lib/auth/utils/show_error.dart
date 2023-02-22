@@ -6,10 +6,10 @@ void showErrorMessage(String code, BuildContext context) {
       code = "No account associated with this email\nPlease create new account";
       break;
     case ("wrong-password"):
-      code = "Please enter the correct password";
+      code = "Invalid Credentials\nPlease try again";
       break;
     case ("invalid-email"):
-      code = "Please provide a valid email";
+      code = "Invalid Credentials\nPlease try again";
       break;
     case ("user-disabled"):
       code = "No record for this user\nPlease create account";
