@@ -1,16 +1,34 @@
-# denote
+# Denote
 
 A documents-sharing app using firebase and flutter.
 
-## Getting Started
+## Introduction
 
-This project is a starting point for a Flutter application.
+Denote is an opensource application built for my classmates to easily manage and access class notes.
+The core objectives are:
 
-A few resources to get you started if this is your first Flutter project:
+* To have all notes related to a specific unit together.
+* Authenticated uses can access the notes any time they need.
+* Save on space taken on the notes when stored locally.
+* Students can access notes of previous semesters.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Flutter UI
+* Firebase
+
+# Main Features
+
+## Firebase Auth
+
+Email-Password Authentication is done by the firebase_auth package
+
+![auth_login](https://user-images.githubusercontent.com/56781148/220371846-23169c59-8942-4c83-9a32-1b8c258ac0b2.png) ![auth_register](https://user-images.githubusercontent.com/56781148/220376687-15904c28-4980-43d4-b836-8841d60f3812.png) ![auth_forgotpw](https://user-images.githubusercontent.com/56781148/220376737-6e1bf3f3-dc27-41a0-b79a-b09c3c19728b.png)
+
+## Firebase Firestore
+
+User data is stored in firebase cloud firestore which is used to retrieve the notes as per their course
+
+## Firebase Storage
+
+All the notes are stored in firebase storage in the _course/semester/unit_ order

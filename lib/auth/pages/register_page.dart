@@ -39,26 +39,13 @@ class _RegisterPageState extends State<RegisterPage> {
     "Select Course",
     "Bsc Civil",
     "Bed Civil",
-    "Bsc Mechanical",
-    "Bsc Chemical",
-    "Bsc Mechatronic",
-    "Bsc EEE",
-    "Bsc TIE",
-    "Bed EEE",
-    "Bed Mechanical"
+    "BTech"
   ];
   final List<String> semesterList = [
     "Sem",
-    "5.2",
-    "5.1",
-    "4.2",
-    "4.1",
     "3.2",
-    "3.1",
     "2.2",
-    "2.1",
     "1.2",
-    "1.1",
   ];
 
   //Formkey for form validation

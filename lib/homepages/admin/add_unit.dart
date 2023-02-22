@@ -120,7 +120,11 @@ class _AddUnitState extends State<AddUnit> {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              DocItem(docName: pickedFile?.name),
+                              DocItem(
+                                //TODO : Doc is untyped here
+                                doc: null,
+                                docName: pickedFile?.name,
+                              ),
                             ],
                           ),
                         )
@@ -132,8 +136,9 @@ class _AddUnitState extends State<AddUnit> {
                   ),
                   isFilePicked == true
                       ? GestureDetector(
-                          onTap: () {
+                          onTap: () async {
                             showDialog(
+                              barrierDismissible: false,
                               context: context,
                               builder: (context) {
                                 return const Center(
@@ -141,12 +146,13 @@ class _AddUnitState extends State<AddUnit> {
                                 );
                               },
                             );
-                            Fbstorage.uploadFile(
+                            await Fbstorage.uploadFile(
                               unitName: unitNameController.text.trim(),
                               course: course,
                               semester: semester,
                               pickedFile: pickedFile,
                             ).then((value) {
+                              Navigator.pop(context);
                               messengerKey.currentState!.showSnackBar(
                                 SnackBar(
                                   content: Text("Uploaded ${pickedFile?.name}"),
@@ -159,7 +165,6 @@ class _AddUnitState extends State<AddUnit> {
                                   builder: (context) => const HomePage(),
                                 ),
                               );
-                              Navigator.pop(context); //TODO: Add pop route
                             });
                           },
                           child: const SubmitButton(buttonText: "Add unit"),

@@ -5,7 +5,7 @@ import '../../firebase_service/firestore_service.dart';
 import '../../firebase_service/storage_service.dart';
 import '../first_page/first_page.dart';
 import '../units/units_page.dart';
-import '../third_page/third_page.dart';
+import '../settings/third_page.dart';
 import 'widgets/appbar.dart';
 import 'widgets/drawer.dart';
 
@@ -62,7 +62,9 @@ class _HomePageState extends State<HomePage> {
         categories: categories,
         userData: userData,
       ),
-      const ThirdPage(),
+      ThirdPage(
+        userData: userData,
+      ),
     ];
     return Scaffold(
       //AppBar

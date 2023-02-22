@@ -1,13 +1,11 @@
 import 'package:denote/auth/utils/show_error.dart';
 import 'package:denote/constants/constants.dart';
 import 'package:denote/firebase_service/storage_service.dart';
-import 'package:denote/homepages/admin/add_document.dart';
 import 'package:denote/homepages/first_page/widgets/doc_item.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-
+import '../firebase_service/download_doc.dart';
 import '../main.dart';
 
 class DocumentsInEachCategoy extends StatefulWidget {
@@ -30,6 +28,7 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
 
   @override
   Widget build(BuildContext context) {
+    final usertype = widget.userData?["usertype"];
     final userCourse = widget.userData?["course"];
     final userSemester = widget.userData?["semester"];
     final unitName = widget.categoryName;
@@ -38,44 +37,46 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
         backgroundColor: kMainDarkColor,
         title: Text(unitName!),
         actions: [
-          IconButton(
-            onPressed: () async {
-              final result = await FilePicker.platform.pickFiles(
-                type: FileType.custom,
-                allowMultiple: false,
-                allowedExtensions: ['pdf'],
-              );
-              if (result == null) {
-                messengerKey.currentState!.showSnackBar(
-                  const SnackBar(
-                    content: Text("No file picked"),
-                  ),
-                );
-                return;
-              } else {
-                setState(() {
-                  pickedFile = result.files.single;
-                  isFilePicked = true;
-                });
-                navigatorKey.currentState!.pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => SelectedDocPage(
-                      pickedFile: pickedFile,
-                      userData: widget.userData,
-                      unitName: unitName,
+          (usertype == "admin")
+              ? IconButton(
+                  onPressed: () async {
+                    final result = await FilePicker.platform.pickFiles(
+                      type: FileType.custom,
+                      allowMultiple: false,
+                      allowedExtensions: ['pdf'],
+                    );
+                    if (result == null) {
+                      messengerKey.currentState!.showSnackBar(
+                        const SnackBar(
+                          content: Text("No file picked"),
+                        ),
+                      );
+                      return;
+                    } else {
+                      setState(() {
+                        pickedFile = result.files.single;
+                        isFilePicked = true;
+                      });
+                      navigatorKey.currentState!.pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => SelectedDocPage(
+                            pickedFile: pickedFile,
+                            userData: widget.userData,
+                            unitName: unitName,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  icon: const Padding(
+                    padding: EdgeInsets.only(right: 15),
+                    child: Icon(
+                      Icons.add,
+                      size: 32,
                     ),
                   ),
-                );
-              }
-            },
-            icon: const Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: Icon(
-                Icons.add,
-                size: 32,
-              ),
-            ),
-          )
+                )
+              : const Offstage(),
         ],
       ),
       body: FutureBuilder(
@@ -95,6 +96,19 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: kHorizontalPadding, vertical: 2),
                   child: ListTile(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                      );
+                      Download.openFile(doc).then(
+                        (value) => Navigator.pop(context),
+                      );
+                    },
                     tileColor: Colors.grey[200],
                     title: Text(doc.name),
                     leading: CircleAvatar(
@@ -102,10 +116,6 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
                       child: const Icon(
                         Icons.menu_book_rounded,
                       ),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.download),
                     ),
                   ),
                 );
@@ -172,6 +182,8 @@ class SelectedDocPage extends StatelessWidget {
               height: 200,
               width: 300,
               child: DocItem(
+                //TODO: doc is untyped
+                doc: null,
                 docName: pickedFile!.name,
               ),
             ),
@@ -182,6 +194,7 @@ class SelectedDocPage extends StatelessWidget {
               color: kMainLightColor,
               onPressed: () async {
                 showDialog(
+                  barrierDismissible: false,
                   context: context,
                   builder: (context) {
                     return const Center(
