@@ -1,5 +1,6 @@
 import 'package:denote/constants/constants.dart';
 import 'package:denote/firebase_service/download_doc.dart';
+import 'package:denote/homepages/PdfViewPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,18 +16,13 @@ class DocItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          },
-        );
-        Download.openFile(doc).then(
-          (value) => Navigator.pop(context),
-        );
+      onTap: () async {
+       
+        await doc.getDownloadURL().then((value) async {
+          await Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => PdfViewPage(pdfUrl: value, pdfName: docName!,)));
+         
+        });
       },
       child: Padding(
         padding: const EdgeInsets.all(7.0),
