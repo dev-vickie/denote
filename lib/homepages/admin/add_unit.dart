@@ -162,7 +162,7 @@ class _AddUnitState extends State<AddUnit> {
 
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
+                                  builder: (context) => const Home(),
                                 ),
                               );
                             });
