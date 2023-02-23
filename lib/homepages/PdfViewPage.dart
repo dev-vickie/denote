@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+import '../constants/constants.dart';
+
 class PdfViewPage extends StatefulWidget {
   final String pdfUrl;
   final String pdfName;
@@ -15,11 +17,13 @@ class _PdfViewPageState extends State<PdfViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: kMainDarkColor,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Color(0xff666666), size: 23),
-        title: Text(widget.pdfName,
-            style: const TextStyle(fontSize: 15, color: Color(0xff666666))),
+        iconTheme: const IconThemeData(color: Colors.white, size: 23),
+        title: Text(
+          widget.pdfName,
+          style: const TextStyle(fontSize: 15, color: Colors.white),
+        ),
       ),
       body: SfPdfViewer.network(
         widget.pdfUrl,
@@ -28,7 +32,6 @@ class _PdfViewPageState extends State<PdfViewPage> {
         scrollDirection: PdfScrollDirection.vertical,
         enableDoubleTapZooming: true,
         enableTextSelection: true,
-        
       ),
     );
   }
