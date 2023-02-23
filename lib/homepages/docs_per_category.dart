@@ -1,7 +1,8 @@
 import 'package:denote/auth/utils/show_error.dart';
 import 'package:denote/constants/constants.dart';
 import 'package:denote/firebase_service/storage_service.dart';
-import 'package:denote/homepages/first_page/widgets/doc_item.dart';
+import 'package:denote/homepages/PdfViewPage.dart';
+import 'package:denote/homepages/Home/widgets/doc_item.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -96,18 +97,15 @@ class _DocumentsInEachCategoyState extends State<DocumentsInEachCategoy> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: kHorizontalPadding, vertical: 2),
                   child: ListTile(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
-                      );
-                      Download.openFile(doc).then(
-                        (value) => Navigator.pop(context),
-                      );
+                    onTap: () async {
+                      // 
+                      await doc.getDownloadURL().then((value) async {
+                        await Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PdfViewPage(
+                                  pdfUrl: value,
+                                  pdfName: doc.name,
+                                )));
+                      });
                     },
                     tileColor: Colors.grey[200],
                     title: Text(doc.name),

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../docs_per_category.dart';
 
-class SecondPage extends StatelessWidget {
+class UnitsPage extends StatelessWidget {
   final List<String>? categories;
   final Map<String, String>? userData;
 
-  const SecondPage(
+  const UnitsPage(
       {super.key, required this.categories, required this.userData});
 
   @override
@@ -17,7 +17,8 @@ class SecondPage extends StatelessWidget {
           ? GridView.builder(
               itemCount: categories?.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
+                crossAxisCount: 2,
+              ),
               itemBuilder: (BuildContext context, index) {
                 return GestureDetector(
                   onTap: () {

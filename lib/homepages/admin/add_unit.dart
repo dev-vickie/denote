@@ -1,6 +1,6 @@
 import 'package:denote/constants/constants.dart';
-import 'package:denote/homepages/first_page/widgets/doc_item.dart';
-import 'package:denote/homepages/homepage/homepage.dart';
+import 'package:denote/homepages/Home/widgets/doc_item.dart';
+import 'package:denote/homepages/homepage/Home.dart';
 import 'package:denote/main.dart';
 import 'package:denote/widgets/custom_textfield.dart';
 import 'package:denote/widgets/submit_button.dart';
@@ -162,7 +162,7 @@ class _AddUnitState extends State<AddUnit> {
 
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const HomePage(),
+                                  builder: (context) => const Home(),
                                 ),
                               );
                             });

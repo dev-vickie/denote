@@ -1,10 +1,10 @@
 import 'package:denote/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatelessWidget {
+class SettingsPage extends StatelessWidget {
   final Map<String, String>? userData;
 
-  const ThirdPage({super.key, required this.userData});
+  const SettingsPage({super.key, required this.userData});
 
   @override
   Widget build(BuildContext context) {

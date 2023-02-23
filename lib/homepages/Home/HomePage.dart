@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'widgets/category_text.dart';
 import 'widgets/doc_item.dart';
 
-class FirstPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   final List<String>? categories;
   final Map<String, String>? userData;
-  const FirstPage({super.key, this.categories, this.userData});
+  const HomePage({super.key, this.categories, this.userData});
 
   @override
   Widget build(BuildContext context) {

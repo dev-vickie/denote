@@ -1,22 +1,22 @@
 import 'package:denote/constants/constants.dart';
+import 'package:denote/homepages/Home/HomePage.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../../firebase_service/firestore_service.dart';
 import '../../firebase_service/storage_service.dart';
-import '../first_page/first_page.dart';
 import '../units/units_page.dart';
-import '../settings/third_page.dart';
+import '../settings/SettingsPage.dart';
 import 'widgets/appbar.dart';
 import 'widgets/drawer.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeState extends State<Home> {
   int selectedPage = 0;
 
   void pageNavigator(index) {
@@ -54,15 +54,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> secondPages = [
-      FirstPage(
+      HomePage(
         categories: categories,
         userData: userData,
       ),
-      SecondPage(
+      UnitsPage(
         categories: categories,
         userData: userData,
       ),
-      ThirdPage(
+      SettingsPage(
         userData: userData,
       ),
     ];
