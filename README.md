@@ -9,7 +9,7 @@ The core objectives are:
 
 * To have all notes related to a specific unit together.
 * Authenticated uses can access the notes any time they need.
-* Save on space taken on the notes when stored locally.
+* Save on space taken by the notes when stored locally.
 * Students can access notes of previous semesters.
 
 ## Stack
