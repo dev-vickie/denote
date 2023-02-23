@@ -29,6 +29,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                 width: 5,
               ),
               Container(
+                padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
@@ -41,7 +42,7 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                   child: Text(
                     "Beta",
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 13,
                       color: Colors.grey,
                     ),
                   ),
@@ -56,14 +57,17 @@ class BuildAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: const Icon(Icons.menu_book),
+                icon: const Icon(Icons.menu, size: 20, color: Colors.white,),
               );
             },
           ),
           actions: const [
-            Icon(
-              Icons.notifications,
-              size: 30,
+            Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(
+                Icons.notifications,
+                size: 23,
+              ),
             )
           ],
         ),
