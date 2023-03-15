@@ -37,7 +37,6 @@ All the notes are stored in firebase storage in the _course/semester/unit_ order
 These are the homepage views
 
 ![homepage](https://user![account](https://user-images.githubusercontent.com/56781148/225244234-15dc36b6-aa10-413b-beac-4dde851ba5de.png)
--images.githubusercontent.com/56781148/225243844-f24f1a7d-0562-436c-9924-d070d5619543.png)
 ![units](https://user-images.githubusercontent.com/56781148/225244003-06026f3c-5814-4284-8e93-076b059e30eb.png)
 
 
