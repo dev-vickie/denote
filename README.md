@@ -1,10 +1,10 @@
 # Denote
 
-A documents-sharing app using firebase and flutter.
+An Open source documents-sharing app using firebase and flutter.
 
 ## Introduction
 
-Denote is an opensource application built for my classmates to easily manage and access class notes.
+Denote is an open source application built for my classmates to easily manage and access class notes.
 The core objectives are:
 
 * To have all notes related to a specific unit together.
