@@ -14,7 +14,7 @@ The core objectives are:
 
 ## Stack
 
-* Flutter UI
+* Flutter
 * Firebase
 
 # Main Features
@@ -52,7 +52,22 @@ These are the homepage views:
 
 ## PDF Viewer
 <div align="center">
-<img src="screenshots/pdfview1.png" width="200px"/>
+<img src="screenshots/pdfview.png" width="200px"/>
 </div>
 
+## packages used
+```dart
+google_nav_bar: ^5.0.6
+  firebase_core: ^2.4.1
+  firebase_auth: ^4.2.5
+  cloud_firestore: ^4.3.1
+  firebase_storage: ^11.0.10
+  firebase_app_check: ^0.1.1+8
+  file_picker:
+  path_provider: ^2.0.12
+  dio: ^4.0.6
+  open_filex:
+  flutter_svg: ^2.0.1
+  syncfusion_flutter_pdfviewer: ^20.4.51
+  ```
 
