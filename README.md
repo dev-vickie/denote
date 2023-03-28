@@ -23,7 +23,7 @@ The core objectives are:
 
 Email-Password Authentication is done by the firebase_auth package
 
-!<div align="center">
+<div align="center">
 <img src="screenshots/auth1.png" width="200px"/>
 <img src="screenshots/auth2.png" width="200px"/>
 <img src="screenshots/auth3.png" width="200px"/>
@@ -42,11 +42,17 @@ All the notes are stored in firebase storage in the _course/semester/unit_ order
 
 These are the homepage views:
 
-![homepage](https://user-images.githubusercontent.com/56781148/225244592-556dc666-ab46-4c8b-a3b6-22df29f7d219.png)
-![units](https://user-images.githubusercontent.com/56781148/225244908-3942ba79-3b1e-48f3-bb74-3758eee739c9.png)
-![account](https://user-images.githubusercontent.com/56781148/225244941-12cde4d4-4f34-4078-81fd-94af99acb490.png)
+
+<div align="center">
+<img src="screenshots/home1.png" width="200px"/>
+<img src="screenshots/home2.png" width="200px"/>
+<img src="screenshots/home3.png" width="200px"/>
+</div>
+
 
 ## PDF Viewer
-![pdfview](https://user-images.githubusercontent.com/56781148/225245369-25bd7b9e-84e2-4673-ab91-ee02070fcb57.png)
+<div align="center">
+<img src="screenshots/pdfview1.png" width="200px"/>
+</div>
 
 
